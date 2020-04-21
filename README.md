@@ -30,5 +30,5 @@ vwx is the version of R.
 w is the version of the rserver it uses.  
 z is the version of this Dockerfile.  
 ```bash  
-git tag -a 3.6.1.4.1 -m "Upadted readme"; git push -u origin --tags  
+git tag -a 3.6.1.4.2 -m "Upadted readme"; git push -u origin --tags  
 ```
