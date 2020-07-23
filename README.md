@@ -14,13 +14,13 @@ In our cluster environment, the rstudio server often doesn't terminate cleanly. 
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:3.6.1.4.6 .
+docker build -t benjaminvincentlab/rserver-binfotron:3.6.1.4.8 .
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:3.6.1.4.6 8787
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:3.6.1.4.8 8787
 ```
 Then direct browser to localhost:8787.  
 
@@ -28,8 +28,8 @@ Then direct browser to localhost:8787.
 ## Tagging
 v.w.x.y.z  
 vwx is the version of R.  
-w is the version of the rserver it uses.  
+y is the version of the rserver it uses.  
 z is the version of this Dockerfile.  
 ```bash  
-git tag -a 3.6.1.4.6 -m "Added tabulizer package."; git push -u origin --tags  
+git tag -a 3.6.1.4.8 -m "Updated StarSalmon (to drop ENST decimals from biomart results if needed) and Housekeeping (to fix find_folder_along_path export bug)."; git push -u origin --tags
 ```
