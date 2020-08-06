@@ -23,4 +23,4 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.3-14')"
 
 # needs to go after binfotron
-RUN R -e "devtools::install_github('benjamin-vincent-lab/StarSalmon', ref = '0.1-10')" 
+RUN R -e "devtools::install_github('benjamin-vincent-lab/StarSalmon', ref = '0.2-02')"
