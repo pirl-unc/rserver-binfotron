@@ -32,8 +32,8 @@ y is the version of the rserver it uses.
 z is the version of this Dockerfile.  
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Updated StarSalmon package, which had more genes added to it from AnnotationDbi."
+my_comment="Updated added packages to run mtb elastic net."
 git add .
 git commit -am "$my_comment"; git push origin master
-git tag -a 3.6.1.4.13 -m "$my_comment"; git push -u origin --tags
+git tag -a 3.6.1.4.14 -m "$my_comment"; git push -u origin --tags
 ```
