@@ -1,4 +1,4 @@
-FROM benjaminvincentlab/rserver:3.6.1.4
+FROM benjaminvincentlab/rserver:4.0.1.0
 # OS: Debian GNU/Linux 9 (stretch)
 
 # for doing mtb elastic net
@@ -20,9 +20,6 @@ RUN R -e "devtools::install_github('ropensci/tabulizer', ref = 'v0.2.2')"
 
 # add glmnet to allow use of corrected 
 RUN R -e "devtools::install_github('cran/glmnet', ref = '2.0-18')"
-
-# For making quality png rasters for ComplexHeatmaps
-RUN apt-get update && apt-get install -y libmagick++-dev
 
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-01')"
