@@ -1,4 +1,4 @@
-FROM benjaminvincentlab/rserver:4.0.1.0
+FROM benjaminvincentlab/rserver:4.0.0.1
 # OS: Debian GNU/Linux 9 (stretch)
 
 # for doing mtb elastic net
