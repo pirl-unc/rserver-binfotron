@@ -23,7 +23,7 @@ RUN R -e "devtools::install_github('cran/glmnet', ref = '2.0-18')"
 
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-01')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.3-17')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.3-20')"
 
 # needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/StarSalmon', ref = '0.2-02')"
