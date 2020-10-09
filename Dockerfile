@@ -1,4 +1,4 @@
-FROM benjaminvincentlab/rserver:4.0.0.1
+FROM benjaminvincentlab/rserver:4.0.0.2
 # OS: Debian GNU/Linux 9 (stretch)
 
 # for doing mtb elastic net
@@ -10,7 +10,6 @@ RUN R -e "install.packages('Epi')"
 # For converting genes
 RUN R -e "BiocManager::install('annotate')"
 RUN R -e "BiocManager::install('org.Hs.eg.db')"
-RUN R -e "BiocManager::install('DESeq2')"
 
 # For diversity metrics
 RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.5-3')" 

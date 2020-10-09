@@ -34,6 +34,6 @@ z is the version of this Dockerfile.
 cd /home/dbortone/docker/rserver_binfotron
 my_comment="Added ggfortify."
 git add .
-git commit -am "$my_comment"; git push origin master
+git commit -am "$my_comment"; git push
 git tag -a 4.0.0.1.3 -m "$my_comment"; git push -u origin --tags
 ```
