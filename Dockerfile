@@ -22,7 +22,7 @@ RUN R -e "devtools::install_github('ropensci/tabulizer', ref = 'v0.2.2')"
 RUN R -e "devtools::install_github('cran/glmnet', ref = '2.0-18')"
 
 # for viewing pca: autoplot, prcomp and fviz_eig, respectively
-RUN R -e "install.packages('cluster', ref = '0.4.11')"
+RUN R -e "install.packages('ggfortify', ref = '0.4.11')"
 RUN R -e "install.packages('cluster', ref = '2.1.0')"
 RUN R -e "install.packages('factoextra', ref = '1.0.7')"
 
