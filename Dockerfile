@@ -21,6 +21,11 @@ RUN R -e "devtools::install_github('ropensci/tabulizer', ref = 'v0.2.2')"
 # add glmnet to allow use of corrected 
 RUN R -e "devtools::install_github('cran/glmnet', ref = '2.0-18')"
 
+# for viewing pca: autoplot, prcomp and fviz_eig, respectively
+RUN R -e "install.packages('cluster', ref = '0.4.11')"
+RUN R -e "install.packages('cluster', ref = '2.1.0')"
+RUN R -e "install.packages('factoextra', ref = '1.0.7')"
+
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-01')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.3-20')"
