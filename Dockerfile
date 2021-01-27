@@ -45,8 +45,10 @@ RUN R -e "install.packages('cluster', ref = '2.1.0')"
 RUN R -e "install.packages('factoextra', ref = '1.0.7')"
 
 # Lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-01')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.3-20')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.4-00')"
+
+#RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-01')"
+
 
 # StarSalmon needs to go after binfotron
-RUN R -e "devtools::install_github('benjamin-vincent-lab/StarSalmon', ref = '0.2-02')"
+# RUN R -e "devtools::install_github('benjamin-vincent-lab/StarSalmon', ref = '0.2-02')"

@@ -10,7 +10,7 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.0.3.0 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.0.3.1 .
 ```
 
 
@@ -61,8 +61,8 @@ vwx is the version of R.
 y is the version of this Dockerfile.  
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="This is a major change from the previous versions.  It drops its benjaminvincentlab/rserver dependency and doesn't have the rserver_handler.sh"
+my_comment="Installed new version of binfotron to drop housekeeping dependency."
 git add .
 git commit -am "$my_comment"; git push
-git tag -a 4.0.3.0 -m "$my_comment"; git push -u origin --tags
+git tag -a 4.0.3.1 -m "$my_comment"; git push -u origin --tags
 ```
