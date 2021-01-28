@@ -59,10 +59,3 @@ Use [run_rserver](https://sc.unc.edu/benjamin-vincent-lab/scripts/run_rserver) t
 v.w.x.y 
 vwx is the version of R.  
 y is the version of this Dockerfile.  
-```bash  
-cd /home/dbortone/docker/rserver_binfotron
-my_comment="Installed new version of housekeeping and StarSalmon -> PostRNASeqAlign."
-git add .
-git commit -am "$my_comment"; git push
-git tag -a 4.0.3.2 -m "$my_comment"; git push -u origin --tags
-```
