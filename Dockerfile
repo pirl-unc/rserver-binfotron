@@ -49,4 +49,4 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.4-
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
 
 # PostRNASeqAlign needs to go after binfotron
-RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.3-16')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.3-17')"
