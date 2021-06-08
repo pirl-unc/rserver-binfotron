@@ -44,6 +44,9 @@ RUN R -e "install.packages('ggfortify', ref = '0.4.11')"
 RUN R -e "install.packages('cluster', ref = '2.1.0')"
 RUN R -e "install.packages('factoextra', ref = '1.0.7')"
 
+# Provides a parallel backend for the %dopar% function using the multicore functionality of the parallel package.
+RUN R -e "install.packages('doMC', ref = '1.3.7')"
+
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.4-00')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
