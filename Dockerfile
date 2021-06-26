@@ -48,7 +48,7 @@ RUN R -e "install.packages('factoextra', ref = '1.0.7')"
 RUN R -e "install.packages('doMC', ref = '1.3.7')"
 
 # Lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.4-00')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.5-01')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
 
 # PostRNASeqAlign needs to go after binfotron
