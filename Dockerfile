@@ -47,6 +47,10 @@ RUN R -e "install.packages('factoextra', ref = '1.0.7')"
 # Provides a parallel backend for the %dopar% function using the multicore functionality of the parallel package.
 RUN R -e "install.packages('doMC', ref = '1.3.7')"
 
+# For using caret package to build models
+RUN R -e "install.packages('xgboost', ref = '1.3.2.1')"
+RUN R -e "install.packages('caret', ref = '6.0-86')"
+
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.5-11')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
