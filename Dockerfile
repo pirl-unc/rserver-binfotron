@@ -56,7 +56,7 @@ RUN R -e "devtools::install_github('miccec/yaGST@56227df3ae183070c9d156af11c306e
 RUN R -e "devtools::install_github('tolgaturan-github/Miracle@fec34ca2a55a45d68de291b9b1481b3deeca1d01')" # 0.0.0.9000 not tagged
 
 # Lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.6-14')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.6-15')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
 
 # PostRNASeqAlign needs to go after binfotron
