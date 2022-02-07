@@ -7,6 +7,7 @@ RUN apt-get clean
 
 # Adding common R Packages that aren't in rocker/verse
 RUN R -e "install.packages(c('pzfx', 'R6', 'checkmate', 'BiocManager', 'cowplot', 'ggrepel', 'pryr', 'viridis'))"
+
 RUN R -e "BiocManager::install('DESeq2')"
 
 RUN R -e "devtools::install_github('jokergoo/ComplexHeatmap')"
@@ -63,3 +64,6 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-11')"
 
 ## Need to add Hmisc and ggnewscale
+RUN R -e "install.packages(c('Hmisc', 'ggnewscale'))"
+RUN R -e "install.packages('viridisLite', ref = '0.4.0')" # tried adding before complexheatmap and CH wouldn't install after that 
+
