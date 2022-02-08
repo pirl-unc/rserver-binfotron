@@ -65,5 +65,4 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref =
 
 ## Need to add Hmisc and ggnewscale
 RUN R -e "install.packages(c('Hmisc', 'ggnewscale'))"
-RUN R -e "install.packages('viridisLite', ref = '0.4.0')" # tried adding before complexheatmap and CH wouldn't install after that 
-
+RUN R -e "devtools::install_github('sjmgarnier/viridisLite', ref = 'v0.4.0')" # CRAN installations of 0.4.0 will installs
