@@ -61,7 +61,7 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.6-
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
 
 # PostRNASeqAlign needs to go after binfotron
-RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-11')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')"
 
 ## Need to add Hmisc and ggnewscale
 RUN R -e "install.packages(c('Hmisc', 'ggnewscale'))"
