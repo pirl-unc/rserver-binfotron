@@ -10,13 +10,13 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.0.3.2 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.0 .
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.0.3.2 8787
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.0 8787
 ```
 Then direct browser to localhost:8787.  
 
@@ -59,3 +59,27 @@ Use [run_rserver](https://sc.unc.edu/benjamin-vincent-lab/scripts/run_rserver) t
 v.w.x.y 
 vwx is the version of R.  
 y is the version of this Dockerfile.  
+
+
+## Making commits, tags:
+```bash  
+cd /home/dbortone/docker/rserver_binfotron
+my_comment="Fixed bug in PostRNASeqAlign where it would crash if not using all the columns."
+git add .
+git commit -am "$my_comment"; git push
+git tag -a 4.2.1.0 -m "$my_comment"; git push -u origin --tags
+```
+
+## Manual push
+```bash
+srun -p dockerbuild --pty bash
+my_version=4.2.1.0
+docker build . -t benjaminvincentlab/rserver-binfotron:$my_version
+docker push benjaminvincentlab/rserver-binfotron:$my_version
+
+## Local build on a Mac
+```terminal
+docker build . -t benjaminvincentlab/rserver-binfotron:4.2.1.0
+docker push benjaminvincentlab/rserver-binfotron:4.2.1.0
+docker run -it --rm -p 8787:8787 -e PASSWORD=paff benjaminvincentlab/rserver-binfotron:4.2.1.0
+```
