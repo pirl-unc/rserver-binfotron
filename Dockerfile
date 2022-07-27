@@ -56,6 +56,11 @@ RUN R -e "install.packages('caret', ref = '6.0-86')"
 RUN R -e "devtools::install_github('miccec/yaGST@56227df3ae183070c9d156af11c306ee799435e6')" # 2017.08.25 not tagged
 RUN R -e "devtools::install_github('tolgaturan-github/Miracle@fec34ca2a55a45d68de291b9b1481b3deeca1d01')" # 0.0.0.9000 not tagged
 
+# Some plotting tools
+RUN R -e "devtools::install_version('VennDiagram', version='1.6.20')"
+RUN R -e "install.packages(c('Hmisc', 'ggnewscale'))"
+RUN R -e "devtools::install_github('sjmgarnier/viridisLite', ref = 'v0.4.0')" # CRAN installations of 0.4.0 will installs
+
 # Lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.6-15')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.2-11')"
@@ -63,6 +68,3 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0
 # PostRNASeqAlign needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')"
 
-## Need to add Hmisc and ggnewscale
-RUN R -e "install.packages(c('Hmisc', 'ggnewscale'))"
-RUN R -e "devtools::install_github('sjmgarnier/viridisLite', ref = 'v0.4.0')" # CRAN installations of 0.4.0 will installs
