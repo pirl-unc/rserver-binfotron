@@ -69,9 +69,9 @@ RUN R -e "install.packages('ggpubr', ref='0.4.0')"
 RUN R -e "devtools::install_version('VennDiagram', version='1.7.3')"
 #
 # Lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.1')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.2')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.6-15')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.2')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.0')"
 # 
 # PostRNASeqAlign needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')"
