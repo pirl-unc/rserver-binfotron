@@ -124,10 +124,14 @@ docker run -it --rm -p 8787:8787 -e PASSWORD=12qwaszx benjaminvincentlab/rserver
 * keep the GitHub and DockerHub tags in sync
 
 When you think you are done push the repo to github and the image to dockerhub:  
-
+Use a temp tag if you aren't sure about the changes: temp_4.2.1.3
 ```bash
 my_comment="Updated binfotron, housekeeping.  Added pROC. Did chmod of library folders so the user can upgrade installed packages (for testing package upgrades before committing to make a new image)."
-git commit -am "$my_comment"; git push
+git commit -am "$my_comment"
+git checkout 4.2.1
+git merge dsb_dev_4.2.1.3
+git checkout master
+git merge dsb_dev_4.2.1.3
 git tag -a 4.2.1.3 -m "$my_comment"; git push -u origin --tags
 docker push benjaminvincentlab/rserver-binfotron:4.2.1.3
 ```
