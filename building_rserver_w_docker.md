@@ -135,7 +135,7 @@ git checkout master
 git merge dsb_dev_4.2.1.5
 git push
 git tag -a 4.2.1.5 -m "$my_comment"; git push -u origin --tags
-docker push benjaminvincentlab/rserver-binfotron:4.2.1.3
+docker push benjaminvincentlab/rserver-binfotron:4.2.1.5
 ```
 
 Now your changes are on [DockerHub](https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron) and can be used by everyone everywhere.  Whoa!!!  
@@ -157,24 +157,24 @@ export SINGULARITY_PULLFOLDER=/datastore/nextgenout5/share/labs/Vincent_Lab/sing
 Alright let's run our new image on the cluster. Normally you'd use '-H' to specify a directory in which you are working.  Here I just set it to your scratch directory:  
 
 ```
-run_rserver -i docker://benjaminvincentlab/rserver-binfotron:4.2.1.0 -c 4 -m 8g -H /home/${USER}/scratch
+run_rserver -i docker://benjaminvincentlab/rserver-binfotron:4.2.1.5 -c 4 -m 8g -H /home/${USER}/scratch
 ```
 
 It can also be helpful to save the image to your singularity folder so you'll have it saved on the cluster:  
 
 ```
-sbatch -c 4 --mem 8g -p allnodes --wrap="singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.0"
+sbatch -c 4 --mem 8g -p allnodes --wrap="singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.5"
 ```  
 Expect this to take some time and to see a lot of "warn xattr..." This is ok.  You could also do this interactively...
 
 ```
-srun --pty -c 4 --mem 8g -p allnodes
-singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.0
+srun --pty -c 1 --mem 4g -p allnodes
+singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.5
 exit
 ```
 
 Then you can refer to it directly:  
 
 ```bash
-run_rserver -i ${SINGULARITY_PULLFOLDER}/rserver-binfotron_4.2.1.0.sif  -c 1 -m 1g -H /home/${USER}/scratch
+run_rserver -i ${SINGULARITY_PULLFOLDER}/rserver-binfotron_4.2.1.5.sif  -c 1 -m 1g -H /home/${USER}/scratch
 ```
