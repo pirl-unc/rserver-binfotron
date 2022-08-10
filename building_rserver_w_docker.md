@@ -106,14 +106,14 @@ Let's start with our `rsever_binfotron`. I started a 4.2.1 branch but didn't do 
 ``` bash
 git clone https://github.com/Benjamin-Vincent-Lab/rserver-binfotron.git
 cd rserver-binfotron
-git checkout tags/4.2.1.2 -b dsb_dev_4.2.1.3 # checkout the most recent tag and make branch to start dev on the next tag
+git checkout tags/4.2.1.2 -b dsb_dev_4.2.1.6 # checkout the most recent tag and make branch to start dev on the next tag
 ```
 
 Now make your changes to the Dockerfile. When done build a new image with a new version and test out the image.  
 
 ```bash
-docker build . -t benjaminvincentlab/rserver-binfotron:4.2.1.3
-docker run -it --rm -p 8787:8787 -e PASSWORD=12qwaszx benjaminvincentlab/rserver-binfotron:4.2.1.3
+docker build . -t benjaminvincentlab/rserver-binfotron:4.2.1.6
+docker run -it --rm -p 8787:8787 -e PASSWORD=12qwaszx benjaminvincentlab/rserver-binfotron:4.2.1.6
 ```
 
 **On versioning tags:**  
@@ -124,18 +124,18 @@ docker run -it --rm -p 8787:8787 -e PASSWORD=12qwaszx benjaminvincentlab/rserver
 * keep the GitHub and DockerHub tags in sync
 
 When you think you are done push the repo to github and the image to dockerhub:  
-Use a temp tag if you aren't sure about the changes: temp_4.2.1.3
+Use a temp tag if you aren't sure about the changes: temp_4.2.1.6
 ```bash
-my_comment="Updating tag."
+my_comment="Updating housekeeping and trying to open up write permission on the entire library path to allow mods in singularity."
 git commit -am "$my_comment"
 git checkout 4.2.1
-git merge dsb_dev_4.2.1.5
+git merge dsb_dev_4.2.1.6
 git push
 git checkout master
-git merge dsb_dev_4.2.1.5
+git merge dsb_dev_4.2.1.6
 git push
-git tag -a 4.2.1.5 -m "$my_comment"; git push -u origin --tags
-docker push benjaminvincentlab/rserver-binfotron:4.2.1.5
+git tag -a 4.2.1.6 -m "$my_comment"; git push -u origin --tags
+docker push benjaminvincentlab/rserver-binfotron:4.2.1.6
 ```
 
 Now your changes are on [DockerHub](https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron) and can be used by everyone everywhere.  Whoa!!!  
@@ -157,24 +157,24 @@ export SINGULARITY_PULLFOLDER=/datastore/nextgenout5/share/labs/Vincent_Lab/sing
 Alright let's run our new image on the cluster. Normally you'd use '-H' to specify a directory in which you are working.  Here I just set it to your scratch directory:  
 
 ```
-run_rserver -i docker://benjaminvincentlab/rserver-binfotron:4.2.1.5 -c 4 -m 8g -H /home/${USER}/scratch
+run_rserver -i docker://benjaminvincentlab/rserver-binfotron:4.2.1.6 -c 4 -m 8g -H /home/${USER}/scratch
 ```
 
 It can also be helpful to save the image to your singularity folder so you'll have it saved on the cluster:  
 
 ```
-sbatch -c 4 --mem 8g -p allnodes --wrap="singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.5"
+sbatch -c 4 --mem 8g -p allnodes --wrap="singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.6"
 ```  
 Expect this to take some time and to see a lot of "warn xattr..." This is ok.  You could also do this interactively...
 
 ```
 srun --pty -c 1 --mem 4g -p allnodes
-singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.5
+singularity pull --nohttps docker://benjaminvincentlab/rserver-binfotron:4.2.1.6
 exit
 ```
 
 Then you can refer to it directly:  
 
 ```bash
-run_rserver -i ${SINGULARITY_PULLFOLDER}/rserver-binfotron_4.2.1.5.sif  -c 1 -m 1g -H /home/${USER}/scratch
+run_rserver -i ${SINGULARITY_PULLFOLDER}/rserver-binfotron_4.2.1.6.sif  -c 1 -m 1g -H /home/${USER}/scratch
 ```

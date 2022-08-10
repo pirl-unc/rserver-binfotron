@@ -81,7 +81,7 @@ RUN \
 RUN R -e "install.packages('pROC', ref='1.18.0')"
 
 # Adding them lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.4')" # needs to go first as the others use it
+RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.1')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')" # Needs to go after binfotron
@@ -90,8 +90,13 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref =
 #   This is one place where the Docker-run container is different than Singularity.
 #   Docker will run as root and allow the changes, Singularity will run as $USER 
 #   and won't allow the change unless we update the permissions.
-RUN \
-  find /usr/local/lib/R/site-library -type d -exec chmod 2777 {} \; && \
-  find /usr/local/lib/R/site-library -type f -exec chmod 666 {} \; && \
-  find /usr/local/lib/R/library -type d -exec chmod 2777 {} \; && \
-  find /usr/local/lib/R/library -type f -exec chmod 666 {} \;
+# RUN \
+#   find /usr/local/lib/R/site-library -type d -exec chmod 2777 {} \; && \
+#   find /usr/local/lib/R/site-library -type f -exec chmod 666 {} \; && \
+#   find /usr/local/lib/R/library -type d -exec chmod 2777 {} \; && \
+#   find /usr/local/lib/R/library -type f -exec chmod 666 {} \;
+# Here we also need to set up an overlay in singularity, which I haven't figured 
+# out yet.  See:
+# https://docs.sylabs.io/guides/3.5/user-guide/persistent_overlays.html
+# https://pawseysc.github.io/singularity-containers/32-writable-trinity/index.html
+# ^^^ problem I ran in to here was '-d' not being a valid flag for mkfs.ext3
