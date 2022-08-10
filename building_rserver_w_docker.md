@@ -130,8 +130,10 @@ my_comment="Updating tag."
 git commit -am "$my_comment"
 git checkout 4.2.1
 git merge dsb_dev_4.2.1.5
+git push
 git checkout master
 git merge dsb_dev_4.2.1.5
+git push
 git tag -a 4.2.1.5 -m "$my_comment"; git push -u origin --tags
 docker push benjaminvincentlab/rserver-binfotron:4.2.1.3
 ```
