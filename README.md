@@ -69,6 +69,8 @@ git add .
 git commit -am "$my_comment"; git push
 git tag -a 4.2.1.0 -m "$my_comment"; git push -u origin --tags
 ```
+You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
+
 
 ## Manual push
 ```bash
@@ -76,3 +78,5 @@ my_version=4.2.1.0
 docker build . -t benjaminvincentlab/rserver-binfotron:$my_version
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```
+
+## See more detailed instructions on building_rserver_w_docker.md
