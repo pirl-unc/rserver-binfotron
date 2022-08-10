@@ -7,11 +7,6 @@ RUN \
   apt-get install -y pdftk && \
   apt-get clean
 
-# Need to allow access to libraries so the user can upgrade over it for temp fixes
-RUN \
-  chmod ugo+w /usr/local/lib/R/site-library && \
-  chmod ugo+w /usr/local/lib/R/library
-
 RUN R -e "install.packages('pzfx', ref = '0.3.0')"
 
 # Adding common R Packages that aren't in rocker/verse
@@ -86,7 +81,17 @@ RUN \
 RUN R -e "install.packages('pROC', ref='1.18.0')"
 
 # Adding them lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.3')" # needs to go first as the others use it
+RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.4')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.1')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')" # Needs to go after binfotron
+
+# Need to allow access to libraries so the user can upgrade over it for temp fixes
+#   This is one place where the Docker-run container is different than Singularity.
+#   Docker will run as root and allow the changes, Singularity will run as $USER 
+#   and won't allow the change unless we update the permissions.
+RUN \
+  find /usr/local/lib/R/site-library -type d -exec chmod 2777 {} \; && \
+  find /usr/local/lib/R/site-library -type f -exec chmod 666 {} \; && \
+  find /usr/local/lib/R/library -type d -exec chmod 2777 {} \; && \
+  find /usr/local/lib/R/library -type f -exec chmod 666 {} \;

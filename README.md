@@ -10,13 +10,13 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.2.
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.4.
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.2 8787
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.4 8787
 ```
 Then direct browser to localhost:8787.  
 
@@ -64,17 +64,17 @@ y is the version of this Dockerfile.
 ## Making commits, tags:
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Removed srun command"
+my_comment="Changed permission of library files and folders to allow modification on Singularity-run containers."
 git add .
 git commit -am "$my_comment"; git push
-git tag -a 4.2.1.0 -m "$my_comment"; git push -u origin --tags
+git tag -a 4.2.1.4 -m "$my_comment"; git push -u origin --tags
 ```
 You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
 
 
 ## Manual push
 ```bash
-my_version=4.2.1.0
+my_version=4.2.1.4
 docker build . -t benjaminvincentlab/rserver-binfotron:$my_version
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```
