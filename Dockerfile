@@ -81,12 +81,10 @@ RUN \
 RUN R -e "install.packages('pROC', ref='1.18.0')"
 
 # Specific to NKC project
-RUN R -e "install.packages('data.table', ref = '1.14.2')"
 RUN R -e "install.packages('caretEnsemble', ref = '2.0.1')"
-RUN R -e "install.packages('foresmodel', ref = '0.6.2')"
-RUN R -e "install.packages('survival', ref = '3.4.0')"
-RUN R -e "install.packages('rlang', ref = '1.0.4')"
-RUN R -e "install.packages('doParallel', ref = '1.0.17')"
+RUN R -e "install.packages('forestmodel', ref = '0.6.2')"
+RUN R -e "install.packages('survival', ref = '3.4.0')" # present in image already but at at v3.3.1
+
 
 # Adding them lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
