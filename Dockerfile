@@ -90,7 +90,7 @@ RUN R -e "install.packages('survival', ref = '3.4.0')" # present in image alread
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.2')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.4-13')" # Needs to go after binfotron
+RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" # Needs to go after binfotron
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
 #   This is one place where the Docker-run container is different than Singularity.
