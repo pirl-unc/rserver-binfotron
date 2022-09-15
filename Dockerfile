@@ -26,6 +26,10 @@ RUN \
   R -e "devtools::install_version('xlsxjars', '0.6.1')" && \
   R -e "devtools::install_version('xlsx', '0.6.5')"
 
+# Getting lots of bugs from xlsx package so added openxlsx as well
+# Keeping xlsx for .xls files
+RUN R -e "install.packages('openxlsx', ref = '4.2.5')"
+
 # For doing mtb elastic net
 #   BiocManager versions controlled by BiocManager
 RUN \
