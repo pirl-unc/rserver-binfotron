@@ -18,11 +18,8 @@ RUN \
 # For making quality png rasters for ComplexHeatmaps
 RUN R -e "install.packages('magick', ref = '2.7.3')"
 
-# Add xlsx
-RUN \
-  R CMD javareconf && \ 
-  R -e "devtools::install_version('xlsxjars', '0.6.1')" && \
-  R -e "devtools::install_version('xlsx', '0.6.5')"
+# Add java free xlsx
+RUN R -e "install.packages('openxlsx', ref='4.2.5')"
 
 # For doing mtb elastic net
 #   BiocManager versions controlled by BiocManager
@@ -33,7 +30,7 @@ RUN \
 
 # For converting genes
 RUN R -e "BiocManager::install('org.Hs.eg.db')" #installs 3.15.0
- 
+
 # For diversity metrics
 RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.6-2')"
 
