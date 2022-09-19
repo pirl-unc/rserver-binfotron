@@ -18,8 +18,17 @@ RUN \
 # For making quality png rasters for ComplexHeatmaps
 RUN R -e "install.packages('magick', ref = '2.7.3')"
 
-# Add java free xlsx
-RUN R -e "install.packages('openxlsx', ref='4.2.5')"
+# Tried for a Java free version, but readxl needs libxls,
+#   which doesn't look like an easy install 
+#   and openxlsx doesn't open 'xls' files.
+RUN \
+  R CMD javareconf && \ 
+  R -e "devtools::install_version('xlsxjars', '0.6.1')" && \
+  R -e "devtools::install_version('xlsx', '0.6.5')"
+
+# Getting lots of bugs from xlsx package so added openxlsx as well
+# Keeping xlsx for .xls files
+RUN R -e "install.packages('openxlsx', ref = '4.2.5')"
 
 # For doing mtb elastic net
 #   BiocManager versions controlled by BiocManager
