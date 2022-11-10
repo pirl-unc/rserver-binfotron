@@ -91,11 +91,13 @@ RUN R -e "install.packages('caretEnsemble', ref = '2.0.1')"
 RUN R -e "install.packages('forestmodel', ref = '0.6.2')"
 RUN R -e "install.packages('survival', ref = '3.4.0')" # present in image already but at at v3.3.1
 
+# Calculating gsva & ssgsea scores
+RUN R -e "BiocManager::install('GSVA')"
 
 # Adding them lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.2')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.4')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" # Needs to go after binfotron
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
