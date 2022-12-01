@@ -61,9 +61,12 @@ RUN \
 RUN R -e "install.packages('doMC', ref = '1.3.8')"
 
 # For using caret package to build models
+# DiagrammeRsvg & rsvg for making xgbtrees into pdfs.
 RUN \
   R -e "install.packages('xgboost', ref = '1.6.0.1')" && \
-  R -e "install.packages('caret', ref = '6.0-92')"
+  R -e "install.packages('caret', ref = '6.0-92')" && \
+  R -e "install.packages('DiagrammeRsvg', ref = '0.1')" && \
+  R -e "install.packages('rsvg', ref = '2.3.2')"
 
 # Packages for running MIRACLE
 #   miccec 2017.08.25 not tagged
@@ -97,7 +100,7 @@ RUN R -e "BiocManager::install('GSVA')"
 # Adding them lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.4')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.6')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" # Needs to go after binfotron
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
