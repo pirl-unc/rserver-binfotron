@@ -99,7 +99,7 @@ RUN R -e "BiocManager::install('GSVA')"
 
 # Adding them lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
-RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.3')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.6')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.6')"
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" # Needs to go after binfotron
 
