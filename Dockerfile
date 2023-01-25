@@ -89,22 +89,24 @@ RUN \
 # Needed for ROC curves
 RUN R -e "install.packages('pROC', ref='1.18.0')"
 
-# Specific to NKC project
+# Specific to modeling
 RUN R -e "install.packages('caretEnsemble', ref = '2.0.1')"
 RUN R -e "install.packages('forestmodel', ref = '0.6.2')"
-RUN R -e "install.packages('survival', ref = '3.4.0')" # present in image already but at at v3.3.1
+RUN R -e "install.packages('survival', ref = '3.4.0')"  # present in image already but at at v3.3.1
+RUN R -e "install.packages('dgof', ref='1.4')"  # Discrete Goodness-of-Fit Tests
 
 # Calculating gsva & ssgsea scores
 RUN R -e "BiocManager::install('GSVA')"
 
-# Adding them lab packages last because we update them often
+# Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.3.6')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.6')"
-
-RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.7.7')"
 
 # Needs to go after binfotron
+RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
+
+
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
 #   This is one place where the Docker-run container is different than Singularity.
