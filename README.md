@@ -64,18 +64,18 @@ y is the version of this Dockerfile.
 ## Making commits, tags:
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Changed permission of library files and folders to allow modification on Singularity-run containers."
-git add .
+my_comment="Updated datasetprep; added DescTools and vcd to do concordances."
 git commit -am "$my_comment"; git push
-git tag -a 4.2.1.17 -m "$my_comment"; git push -u origin --tags
+my_tag="4.2.1.20"
+git tag -a "$my_tag" -m "$my_comment"; git push origin "$my_tag"
 ```
 You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
 
 
 ## Manual push
 ```bash
-my_version=4.2.1.17
-docker build . -t benjaminvincentlab/rserver-binfotron:$my_version
+my_version=4.2.1.20
+docker build -t benjaminvincentlab/rserver-binfotron:$my_version .
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```
 
