@@ -10,7 +10,7 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.17 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.21 .
 ```
 
 
@@ -74,7 +74,7 @@ You should merge with that R version's branch and, if it's the most recent versi
 
 ## Manual push
 ```bash
-my_version=4.2.1.20
+my_version=4.2.1.21
 docker build -t benjaminvincentlab/rserver-binfotron:$my_version .
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```
