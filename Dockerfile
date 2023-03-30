@@ -107,7 +107,7 @@ RUN R -e "install.packages('ggforce', ref = '0.4.1')"  	# for geom_mark_ellipse
 # Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.11')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.8.1')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.8.3')"
 
 # Needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
