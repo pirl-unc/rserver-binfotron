@@ -94,6 +94,8 @@ RUN R -e "install.packages('caretEnsemble', ref = '2.0.1')"
 RUN R -e "install.packages('forestmodel', ref = '0.6.2')"
 RUN R -e "install.packages('survival', ref = '3.4.0')"  # present in image already but at at v3.3.1
 RUN R -e "install.packages('dgof', ref='1.4')"  # Discrete Goodness-of-Fit Tests
+RUN R -e "install.packages('pls', ref='2.8.1')"
+
 
 # Calculating gsva & ssgsea scores
 RUN R -e "BiocManager::install('GSVA')"
