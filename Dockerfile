@@ -13,7 +13,7 @@ RUN R -e "install.packages('pzfx', ref = '0.3.0')"
 RUN \
   R -e "install.packages(c('pzfx', 'R6', 'checkmate', 'cowplot', 'ggrepel', 'pryr'))" && \
   R -e "BiocManager::install('DESeq2')" && \
-  R -e "devtools::install_github('jokergoo/ComplexHeatmap@2bb14c911d31c8c39514e0a6d33a01017d8b3721')" #version 2.13.1, untagged, using last commit for which all testing checks passed
+  R -e "devtools::install_github('jokergoo/ComplexHeatmap@ae0ec42cd2e4e0446c114d23dcf43cf2c2f585c8')" #version 2.15.4, untagged, using last commit for which all testing checks passed
 
 # For making quality png rasters for ComplexHeatmaps
 RUN R -e "install.packages('magick', ref = '2.7.3')"
