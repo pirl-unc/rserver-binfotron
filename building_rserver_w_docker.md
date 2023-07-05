@@ -178,3 +178,15 @@ Then you can refer to it directly:
 ```bash
 run_rserver -i ${SINGULARITY_PULLFOLDER}/rserver-binfotron_4.2.1.21.sif  -c 1 -m 1g -H /home/${USER}/scratch
 ```
+
+TO ACTUALLY GET THIS WORKING WITH RAFT ...
+
+* note that pulled images end up in
+/datastore/nextgenout5/share/labs/VincentLab/tools/singularity folder
+
+.sif file needs to be moved into 
+/datastore/nextgenout5/share/labs/VincentLab/tools/raft/imgs folder
+
+so:
+Use singularity pull command as above then
+Mv from singularity folder to raft/imgs
