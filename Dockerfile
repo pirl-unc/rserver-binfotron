@@ -3,10 +3,14 @@ FROM rocker/verse:4.2.1
 
 # For adding metadata to pdfs and generating LATEX reports
 RUN \
-  apt-get update && apt-get install -y --no-install-recommends \
+  apt-get update && apt-get install -y \
     pdftk \
+    texlive-base \
+    texlive-binaries \
+    texlive-pictures \
     texlive-latex-base \
-    texlive-latex-recommended
+    texlive-latex-recommended \
+    texlive-latex-extra
 
 RUN \
   apt-get clean
