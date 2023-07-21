@@ -1,10 +1,14 @@
 FROM rocker/verse:4.2.1
 # OS: GNU/Linux Ubuntu 20.04 LTS (focal fossa)
 
-# For adding metadata to pdfs
+# For adding metadata to pdfs and generating LATEX reports
 RUN \
-  apt-get update && \
-  apt-get install -y pdftk && \
+  apt-get update && apt-get install -y --no-install-recommends \
+    pdftk \
+    texlive-latex-base \
+    texlive-latex-recommended
+
+RUN \
   apt-get clean
 
 RUN R -e "install.packages('pzfx', ref = '0.3.0')"
