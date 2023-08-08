@@ -104,15 +104,15 @@ RUN R -e "install.packages('survival', ref = '3.4.0')"  # present in image alrea
 RUN R -e "install.packages('dgof', ref='1.4')"  # Discrete Goodness-of-Fit Tests
 RUN R -e "install.packages('pls', ref='2.8.1')"
 
-
 # Calculating gsva & ssgsea scores
 RUN R -e "BiocManager::install('GSVA')"
-
 
 RUN R -e "install.packages('DescTools', ref='0.99.48')" # Lin's numeric concordance
 RUN R -e "install.packages('vcd', ref='1.4.11')"  	# Ordinal concordance
 RUN R -e "install.packages('ggforce', ref = '0.4.1')"  	# for geom_mark_ellipse
 
+# For stratifying sets based on multiple columns
+RUN R -e "install.packages('splitstackshape', ref='1.4.8')"
 
 # Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
@@ -121,7 +121,6 @@ RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.9.
 
 # Needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
-
 
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
