@@ -10,18 +10,18 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.31 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.44 .
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.31
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.44
 ```
 Then direct browser to localhost:8787.  
 
 
-## Running on the bioinf cluster with singularity
+## Running on the bioinf cluster with apptainer
 
 Either make sure you do all of the following:
 * Use the --pid flag. This makes sure the job kills all of the rserver's processes when the job ends. If you don't use this flag, your processess will be left running on the cluster and the next person who uses that node won't be able to change from your bindings.
@@ -64,9 +64,9 @@ y is the version of this Dockerfile.
 ## Making commits, tags:
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Updated datasetprep; added DescTools and vcd to do concordances."
+my_comment="Updated binfotron to encode decode clms. Fixed regression bugs for doing multiple dep_Var and indep_var at the same time."
 git commit -am "$my_comment"; git push
-my_tag="4.2.1.20"
+my_tag="4.2.1.44"
 git tag -a "$my_tag" -m "$my_comment"; git push origin "$my_tag"
 ```
 You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
@@ -74,7 +74,7 @@ You should merge with that R version's branch and, if it's the most recent versi
 
 ## Manual push
 ```bash
-my_version=4.2.1.31
+my_version=4.2.1.44
 docker build -t benjaminvincentlab/rserver-binfotron:$my_version .
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```
