@@ -2,3 +2,4 @@ build_log.txt
 nextflow
 DSB_README.md
 .Dockerfile.swp
+.DS_Store
