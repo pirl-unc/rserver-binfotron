@@ -10,13 +10,13 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.46 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.51 .
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.46
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.51
 ```
 Then direct browser to localhost:8787.  
 
@@ -24,17 +24,17 @@ Then direct browser to localhost:8787.
 ## Push to DockerHub
 ```bash
 docker login
-docker push benjaminvincentlab/rserver-binfotron:4.2.1.46
+docker push benjaminvincentlab/rserver-binfotron:4.2.1.51
 ```
 
 ## On cluster pull from DockerHub
 ```
-sbatch -c 4 --mem 8g -p allnodes --wrap="apptainer pull docker://benjaminvincentlab/rserver-binfotron:4.2.1.46"
+sbatch -c 4 --mem 8g -p allnodes --wrap="apptainer pull docker://benjaminvincentlab/rserver-binfotron:4.2.1.51"
 ```
 
 ## move it from the pullfolder to raft images
 ```
-mv ${APPTAINER_PULLFOLDER}/rserver-binfotron_4.2.1.46.sif /datastore/nextgenout5/share/labs/Vincent_Lab/tools/raft/imgs/benjaminvincentlab-rserver-binfotron-4.2.1.46.img
+mv ${APPTAINER_PULLFOLDER}/rserver-binfotron_4.2.1.51.sif /datastore/nextgenout5/share/labs/Vincent_Lab/tools/raft/imgs/benjaminvincentlab-rserver-binfotron-4.2.1.51.img
 ```
 
 
@@ -81,9 +81,9 @@ y is the version of this Dockerfile.
 ## Making commits, tags:
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Updated binfotron to encode decode clms. Fixed regression bugs for doing multiple dep_Var and indep_var at the same time."
+my_comment="Updated binfotron to add df_filter to import functions and fix max_fraction_largest arg. Added plotly for 3d plots."
 git commit -am "$my_comment"; git push
-my_tag="4.2.1.46"
+my_tag="4.2.1.51"
 git tag -a "$my_tag" -m "$my_comment"; git push origin "$my_tag"
 ```
 You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
@@ -91,7 +91,7 @@ You should merge with that R version's branch and, if it's the most recent versi
 
 ## Manual push
 ```bash
-my_version=4.2.1.46
+my_version=4.2.1.51
 docker build -t benjaminvincentlab/rserver-binfotron:$my_version .
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```

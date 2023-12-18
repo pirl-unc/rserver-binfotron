@@ -114,10 +114,13 @@ RUN R -e "install.packages('ggforce', ref = '0.4.1')"  	# for geom_mark_ellipse
 # For stratifying sets based on multiple columns
 RUN R -e "install.packages('splitstackshape', ref='1.4.8')"
 
+# For 3D plots
+RUN R -e "install.packages('plotly', ref='4.10.3')"
+
 # Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.11')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.9.10')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.10.1')"
 
 # Needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
