@@ -18,7 +18,7 @@ docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.51 .
 ```bash
 docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.51
 ```
-Then direct browser to localhost:8787.  
+Then direct browser to localhost:8787. Your username is rstudio.
 
 
 ## Push to DockerHub
