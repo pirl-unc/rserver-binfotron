@@ -12,6 +12,10 @@ RUN \
     texlive-latex-recommended \
     texlive-latex-extra
 
+# for making nice trees of directory structures
+RUN \
+  apt-get install -y tree
+
 RUN \
   apt-get clean
 
@@ -70,11 +74,14 @@ RUN R -e "install.packages('doMC', ref = '1.3.8')"
 
 # For using caret package to build models
 # DiagrammeRsvg & rsvg for making xgbtrees into pdfs.
+# RhpcBLASctl for allowing xgbtree to set it's threads to 1 
+#   so that caret can do multithreading with xgbtree
 RUN \
   R -e "install.packages('xgboost', ref = '1.6.0.1')" && \
   R -e "install.packages('caret', ref = '6.0-92')" && \
   R -e "install.packages('DiagrammeRsvg', ref = '0.1')" && \
-  R -e "install.packages('rsvg', ref = '2.3.2')"
+  R -e "install.packages('rsvg', ref = '2.3.2')" && \
+  R -e "install.packages('RhpcBLASctl', ref = '0.21.247.1')"
 
 # Packages for running MIRACLE
 #   miccec 2017.08.25 not tagged
