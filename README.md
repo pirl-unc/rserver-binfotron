@@ -1,5 +1,7 @@
 # rserver-binfotron
 
+* this package was originally hosted at https://github.com/Benjamin-Vincent-Lab/rserver-binfotron and was moved here on 2/13/2024
+
 ## Introduction
 This Dockerfile is used to run binfotron functions.
 
