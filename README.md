@@ -12,13 +12,13 @@ https://hub.docker.com/repository/docker/benjaminvincentlab/rserver-binfotron
 
 ## Building locally
 ```bash
-docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.55 .
+docker build -t benjaminvincentlab/rserver-binfotron:4.2.1.59 .
 ```
 
 
 ## Running locally
 ```bash
-docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.55
+docker run -e PASSWORD=12qwaszx --rm -p 8787:8787 -v ~/Desktop:/home/rstudio benjaminvincentlab/rserver-binfotron:4.2.1.59
 ```
 Then direct browser to localhost:8787. Your username is rstudio.
 
@@ -26,17 +26,17 @@ Then direct browser to localhost:8787. Your username is rstudio.
 ## Push to DockerHub
 ```bash
 docker login
-docker push benjaminvincentlab/rserver-binfotron:4.2.1.55
+docker push benjaminvincentlab/rserver-binfotron:4.2.1.59
 ```
 
 ## On cluster pull from DockerHub
 ```
-sbatch -c 4 --mem 8g -p allnodes --wrap="apptainer pull docker://benjaminvincentlab/rserver-binfotron:4.2.1.55"
+sbatch -c 4 --mem 8g -p allnodes --wrap="apptainer pull docker://benjaminvincentlab/rserver-binfotron:4.2.1.59"
 ```
 
 ## move it from the pullfolder to raft images
 ```
-mv ${APPTAINER_PULLFOLDER}/rserver-binfotron_4.2.1.55.sif /datastore/nextgenout5/share/labs/Vincent_Lab/tools/raft/imgs/benjaminvincentlab-rserver-binfotron-4.2.1.55.img
+mv ${APPTAINER_PULLFOLDER}/rserver-binfotron_4.2.1.59.sif /datastore/nextgenout5/share/labs/Vincent_Lab/tools/raft/imgs/benjaminvincentlab-rserver-binfotron-4.2.1.59.img
 ```
 
 
@@ -50,6 +50,7 @@ Either make sure you do all of the following:
 data_dir=$(mktemp -d -t rserver-XXXXXXXX)}
 ```
 * Make a '--database-config-file' 
+
 ```
   database_config_path=${data_dir}/database.conf
   echo "provider=sqlite" > $database_config_path
@@ -63,7 +64,9 @@ data_dir=$(mktemp -d -t rserver-XXXXXXXX)}
   echo "connection-timeout-seconds=10" >> $database_config_path
   echo "connection-uri=postgresql://postgres@localhost:5432/rstudio?sslmode=allow&options=-csearch_path=public" >> $database_config_path
 ```
+
 * Then run
+
 ```
 singularity exec --pid --nohttps --home $rstudio_home_dir --bind $bindings $image_path \
       rserver --www-port $source_command --server-data-dir $data_dir --database-config-file $database_config_path"
@@ -83,9 +86,9 @@ y is the version of this Dockerfile.
 ## Making commits, tags:
 ```bash  
 cd /home/dbortone/docker/rserver_binfotron
-my_comment="Updated binfotron to add df_filter to import functions and fix max_fraction_largest arg. Added plotly for 3d plots."
+my_comment="Updated binfotron to allow reporting of LRT PValues."
 git commit -am "$my_comment"; git push
-my_tag="4.2.1.55"
+my_tag="4.2.1.59"
 git tag -a "$my_tag" -m "$my_comment"; git push origin "$my_tag"
 ```
 You should merge with that R version's branch and, if it's the most recent version of R, merge with master.
@@ -93,7 +96,7 @@ You should merge with that R version's branch and, if it's the most recent versi
 
 ## Manual push
 ```bash
-my_version=4.2.1.55
+my_version=4.2.1.59
 docker build -t benjaminvincentlab/rserver-binfotron:$my_version .
 docker push benjaminvincentlab/rserver-binfotron:$my_version
 ```

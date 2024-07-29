@@ -124,13 +124,36 @@ RUN R -e "install.packages('splitstackshape', ref='1.4.8')"
 # For 3D plots
 RUN R -e "install.packages('plotly', ref='4.10.3')"
 
+# For sequence logos
+RUN \
+  R -e "BiocManager::install('msa')" && \
+  R -e "install.packages('ggseqlogo', ref='0.2')"
+
+RUN \
+  R -e "BiocManager::install('msa')" && \
+  R -e "install.packages('ggseqlogo', ref='0.2')"
+
+# for random-effects model meta-analysis
+RUN \
+  R -e "install.packages('metafor', ref='4.6.0')"
+
+# for double-density plots
+RUN \
+  R -e "install.packages('ggridges', ref='0.5.6')"
+
+# updating some packages that were already on tidyverse
+RUN \
+  R -e "install.packages('ggplot2', ref='3.5.1')" && \
+  R -e "install.packages('tidyselect', ref='1.2.0')" && \
+  R -e "install.packages('tidyr', ref='1.3.1')"
+
 # Adding the lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.5')" # needs to go first as the others use it
-RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.11')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.10.3')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.7')" # needs to go first as the others use it
+RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.13')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.11.1')"
 
 # Needs to go after binfotron
-RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.5.3')" 
+RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.6.0')" 
 
 
 # Need to allow access to libraries so the user can upgrade over it for temp fixes
