@@ -145,6 +145,8 @@ RUN \
   R -e "install.packages('tidyr', ref='1.3.1')"
 
 RUN R -e "install.packages('argparse', ref='2.2.3')"
+RUN R -e "install.packages('NMF', ref='0.28')"
+RUN R -e "install.packages('config', ref='0.3.2')"
 
 # Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.7')" # needs to go first as the others use it
