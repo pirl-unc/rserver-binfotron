@@ -151,7 +151,7 @@ RUN R -e "install.packages('config', ref='0.3.2')"
 # Adding the lab packages last because we update them often
 RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.7')" # needs to go first as the others use it
 RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.13')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.11.1')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.11.2')"
 
 # Needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.6.0')" 
