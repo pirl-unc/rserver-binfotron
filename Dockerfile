@@ -28,7 +28,7 @@ RUN \
   R -e "devtools::install_github('jokergoo/ComplexHeatmap@ae0ec42cd2e4e0446c114d23dcf43cf2c2f585c8')" #version 2.15.4, untagged, using last commit for which all testing checks passed
 
 # For making quality png rasters for ComplexHeatmaps
-RUN R -e "install.packages('magick', ref = '2.8.4')"
+RUN R -e "install.packages('magick', ref = '2.8.5')"
 
 # Tried for a Java free version, but readxl needs libxls,
 #   which doesn't look like an easy install 
@@ -40,24 +40,24 @@ RUN \
 
 # Getting lots of bugs from xlsx package so added openxlsx as well
 # Keeping xlsx for .xls files
-RUN R -e "install.packages('openxlsx', ref = '4.2.7')"
+RUN R -e "install.packages('openxlsx', ref = '4.2.7.1')"
 
 # For doing mtb elastic net
 #   BiocManager versions controlled by BiocManager
 RUN \
   R -e "BiocManager::install('survcomp')" && \
   R -e "BiocManager::install('sm')" && \
-  R -e "install.packages('Epi', ref='2.53')"
+  R -e "install.packages('Epi', ref='2.55')"
 
 # For converting genes
 RUN R -e "BiocManager::install('org.Hs.eg.db')" #installs 3.19.0
 
 # For diversity metrics
-RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.6-8')"
+RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.7')"
 
 # Add tabulizer for getting tables out of pdf's. Melero_GBM_2019 dataset
 RUN \
-  R -e "devtools::install_github('leeper/tabulizerjars', ref='v1.0.1')" && \
+  R -e "devtools::install_github('leeper/tabulizerjars', ref = 'v1.0.1')" && \
   R -e "devtools::install_github('ropensci/tabulizer', ref = 'v0.2.2')"
 
 # add glmnet to allow use of corrected metrics
@@ -80,7 +80,7 @@ RUN \
   R -e "install.packages('xgboost', ref = '1.7.8.1')" && \
   R -e "install.packages('caret', ref = '6.0-94')" && \
   R -e "install.packages('DiagrammeRsvg', ref = '0.1')" && \
-  R -e "install.packages('rsvg', ref = '2.6.0')" && \
+  R -e "install.packages('rsvg', ref = '2.6.1')" && \
   R -e "install.packages('RhpcBLASctl', ref = '0.23-42')"
 
 # Packages for running MIRACLE
@@ -105,18 +105,18 @@ RUN \
 RUN R -e "install.packages('pROC', ref='1.18.5')"
 
 # Specific to modeling
-RUN R -e "install.packages('caretEnsemble', ref = '4.0.0')"
+RUN R -e "install.packages('caretEnsemble', ref = '4.0.1')"
 RUN R -e "install.packages('forestmodel', ref = '0.6.2')"
 RUN R -e "install.packages('survival', ref = '3.7-0')"
 
 RUN R -e "install.packages('dgof', ref='1.4')"  # Discrete Goodness-of-Fit Tests
-RUN R -e "install.packages('pls', ref='2.8-4')"
+RUN R -e "install.packages('pls', ref='2.8-5')"
 
 # Calculating gsva & ssgsea scores
 RUN R -e "BiocManager::install('GSVA')"
 
-RUN R -e "install.packages('DescTools', ref='0.99.56')" # Lin's numeric concordance
-RUN R -e "install.packages('vcd', ref='1.4.12')"  	# Ordinal concordance
+RUN R -e "install.packages('DescTools', ref='0.99.57')" # Lin's numeric concordance
+RUN R -e "install.packages('vcd', ref='1.4.13')"  	# Ordinal concordance
 RUN R -e "install.packages('ggforce', ref = '0.4.2')"  	# for geom_mark_ellipse
 
 # For stratifying sets based on multiple columns
