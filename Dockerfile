@@ -53,7 +53,7 @@ RUN \
 RUN R -e "BiocManager::install('org.Hs.eg.db')" #installs 3.19.0
 
 # For diversity metrics
-RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.7')"
+RUN R -e "devtools::install_github('vegandevs/vegan', ref = 'v2.6-8')"
 
 # Add tabulizer for getting tables out of pdf's. Melero_GBM_2019 dataset
 RUN \
