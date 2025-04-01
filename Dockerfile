@@ -138,6 +138,12 @@ RUN \
 RUN \
   R -e "install.packages('ggridges', ref='0.5.6')"
 
+
+# selecting the elbow in pcas
+RUN \
+  R -e "install.packages('inflection', ref='1.3.6')" && \
+  R -e "devtools::install_github('mukundvarma/kneer@b66adf34234f1f6f8efc198814777b17a93d3620')"
+
 # updating some packages that were already on tidyverse
 RUN \
   R -e "install.packages('ggplot2', ref='3.5.1')" && \
@@ -149,9 +155,9 @@ RUN R -e "install.packages('NMF', ref='0.28')"
 RUN R -e "install.packages('config', ref='0.3.2')"
 
 # Adding the lab packages last because we update them often
-RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.7')" # needs to go first as the others use it
-RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.13')"
-RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.11.2')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/housekeeping', ref = '0.3.11')" # needs to go first as the others use it
+RUN R -e "devtools::install_github('benjamin-vincent-lab/datasetprep', ref = '0.4.17')"
+RUN R -e "devtools::install_github('benjamin-vincent-lab/binfotron', ref = '0.11.5')"
 
 # Needs to go after binfotron
 RUN R -e "devtools::install_github('benjamin-vincent-lab/PostRNASeqAlign', ref = '0.6.0')" 
